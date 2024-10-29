@@ -33,11 +33,13 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
         // Obtenir les éléments visuels
         ImageView fruitImage = convertView.findViewById(R.id.fruitImage);
         TextView fruitName = convertView.findViewById(R.id.fruitName);
+        TextView fruitPrice = convertView.findViewById(R.id.fruitPrice);
 
         // Mettre à jour les données
         Fruit currentFruit = fruits.get(position);
         fruitName.setText(currentFruit.getName());
         fruitImage.setImageResource(currentFruit.getImage());
+        fruitPrice.setText(String.valueOf(currentFruit.getPrice()));
 
         return convertView;
     }

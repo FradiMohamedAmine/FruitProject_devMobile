@@ -31,13 +31,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Liste de fruits avec noms et images
         List<Fruit> fruits = new ArrayList<>();
-        fruits.add(new Fruit("Abricot", R.drawable.abricot));
-        fruits.add(new Fruit("Banane", R.drawable.banane));
-        fruits.add(new Fruit("Orange", R.drawable.orange));
-        fruits.add(new Fruit("Pêche", R.drawable.peche));
-        fruits.add(new Fruit("Poire", R.drawable.poire));
-        fruits.add(new Fruit("Pomme", R.drawable.pomme));
-        fruits.add(new Fruit("Raisin", R.drawable.raisin));
+        fruits.add(new Fruit("Abricot",10, R.drawable.abricot));
+        fruits.add(new Fruit("Banane",15, R.drawable.banane));
+        fruits.add(new Fruit("Orange",30, R.drawable.orange));
+        fruits.add(new Fruit("Pêche",5, R.drawable.peche));
+        fruits.add(new Fruit("Poire",25, R.drawable.poire));
+        fruits.add(new Fruit("Pomme",11, R.drawable.pomme));
+        fruits.add(new Fruit("Raisin",40, R.drawable.raisin));
 
         // Créer l'adaptateur et l'associer à la ListView
         FruitAdapter adapter = new FruitAdapter(this, fruits);

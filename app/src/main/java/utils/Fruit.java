@@ -3,10 +3,20 @@ package utils;
 public class Fruit {
     private String name;
     private int image ;
+    private float price;
 
-    public Fruit(String name, int image) {
+    public Fruit(String name,float price ,int image) {
         this.name = name;
         this.image = image;
+        this.price =price;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     public String getName() {
