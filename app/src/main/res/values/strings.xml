@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">List View</string>
+    <string-array name="countries">
+        <item>Allemagne</item>
+        <item>France</item>
+        <item>Italie</item>
+        <item>Espagne</item>
+        <item>Royaume-Uni</item>
+        <item>États-Unis</item>
+        <item>Canada</item>
+        <item>Japon</item>
+        <item>Australie</item>
+        <item>Inde</item>
+        <item>Allemagne</item>
+        <item>France</item>
+        <item>Italie</item>
+        <item>Espagne</item>
+        <item>Royaume-Uni</item>
+        <item>États-Unis</item>
+        <item>Canada</item>
+        <item>Japon</item>
+        <item>Australie</item>
+        <item>Inde</item>
+        <item>Allemagne</item>
+        <item>France</item>
+        <item>Italie</item>
+        <item>Espagne</item>
+        <item>Royaume-Uni</item>
+        <item>États-Unis</item>
+        <item>Canada</item>
+        <item>Japon</item>
+        <item>Australie</item>
+        <item>Inde</item>
+    </string-array>
+
+</resources>
