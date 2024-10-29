@@ -7,15 +7,14 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.example.myapplication.R;
-
-import utils.Fruit;
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class FruitAdapter extends ArrayAdapter<Fruit> {
     private final Context context;
     private final List<Fruit> fruits;
+    private final DecimalFormat priceFormat = new DecimalFormat("#.00");
 
     public FruitAdapter(Context context, List<Fruit> fruits) {
         super(context, R.layout.item_view, fruits);
@@ -25,22 +24,33 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        ViewHolder holder;
+
         if (convertView == null) {
             LayoutInflater inflater = LayoutInflater.from(context);
             convertView = inflater.inflate(R.layout.item_view, parent, false);
+            holder = new ViewHolder();
+            holder.fruitImage = convertView.findViewById(R.id.fruitImage);
+            holder.fruitName = convertView.findViewById(R.id.fruitName);
+            holder.fruitPrice = convertView.findViewById(R.id.fruitPrice);
+            convertView.setTag(holder);
+        } else {
+            holder = (ViewHolder) convertView.getTag();
         }
 
-        // Obtenir les éléments visuels
-        ImageView fruitImage = convertView.findViewById(R.id.fruitImage);
-        TextView fruitName = convertView.findViewById(R.id.fruitName);
-        TextView fruitPrice = convertView.findViewById(R.id.fruitPrice);
-
-        // Mettre à jour les données
+        // Populate the data
         Fruit currentFruit = fruits.get(position);
-        fruitName.setText(currentFruit.getName());
-        fruitImage.setImageResource(currentFruit.getImage());
-        fruitPrice.setText(String.valueOf(currentFruit.getPrice()));
+        holder.fruitName.setText(currentFruit.getName());
+        holder.fruitImage.setImageResource(currentFruit.getImage());
+        holder.fruitPrice.setText(priceFormat.format(currentFruit.getPrice()));
 
         return convertView;
+    }
+
+    // ViewHolder class to cache view references
+    private static class ViewHolder {
+        ImageView fruitImage;
+        TextView fruitName;
+        TextView fruitPrice;
     }
 }

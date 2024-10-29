@@ -1,18 +1,13 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import utils.Fruit;
@@ -27,20 +22,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView = findViewById(R.id.myListView);
+        listView = findViewById(R.id.myListView);
 
-        // Liste de fruits avec noms et images
         List<Fruit> fruits = new ArrayList<>();
-        fruits.add(new Fruit("Abricot",10, R.drawable.abricot));
-        fruits.add(new Fruit("Banane",15, R.drawable.banane));
-        fruits.add(new Fruit("Orange",30, R.drawable.orange));
-        fruits.add(new Fruit("Pêche",5, R.drawable.peche));
-        fruits.add(new Fruit("Poire",25, R.drawable.poire));
-        fruits.add(new Fruit("Pomme",11, R.drawable.pomme));
-        fruits.add(new Fruit("Raisin",40, R.drawable.raisin));
+        fruits.add(new Fruit("Fraise", 5.500f, R.drawable.fraise));
+        fruits.add(new Fruit("Banane", 3.700f, R.drawable.banane));
+        fruits.add(new Fruit("Pomme", 5.300f, R.drawable.pomme));
+        fruits.add(new Fruit("Dattes", 8.900f, R.drawable.dattes));
+        fruits.add(new Fruit("Poire", 6.200f, R.drawable.poire));
 
-        // Créer l'adaptateur et l'associer à la ListView
         FruitAdapter adapter = new FruitAdapter(this, fruits);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Fruit selectedFruit = fruits.get(position);
+
+                Intent intent = new Intent(MainActivity.this, PurchaseActivity.class);
+                intent.putExtra("fruit", selectedFruit);
+                intent.putExtra("price", selectedFruit.getPrice());
+                startActivity(intent);
+            }
+        });
     }
 }
